@@ -1,366 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cris John Gatila Portfolio</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background: url('Gemini_Generated_Image_z2579sz2579sz257~3.png') no-repeat center center/cover;
-    color: #222;
-    margin: 0;
-    padding: 0;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cris John Gatila | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #d4af37;
+            --dark-bg: #121212;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text-light: #f4f4f4;
+            --transition: all 0.3s ease;
+        }
 
-  .container {
-    background: lightgray;
-    max-width: 1000px;
-    margin: 30px auto;
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                        url('Gemini_Generated_Image_z2579sz2579sz257~3.png') no-repeat center center/cover fixed;
+            color: var(--text-light);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
 
-  main {
-    flex: 1 1 65%;
-  }
+        /* Entrance Animation */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-  aside {
-    flex: 1 1 30%;
-    background: lightgray;
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  }
-  
-  .profile-section {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    background: gray;
-    padding: 15px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  }
+        .container {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 20px;
+            animation: fadeInUp 0.8s ease-out;
+        }
 
-  .profile-section img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #333;
-    cursor: pointer;
-    transition: 0.3s;
-  }
+        /* Profile Section */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 40px;
+        }
 
-  .profile-section img:hover {
-    transform: scale(1.05);
-  }
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-gold);
+            transition: var(--transition);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
 
-  .profile-info h2 {
-    margin: 0;
-    color: #111;
-  }
+        .profile-img:hover {
+            transform: rotate(5deg) scale(1.1);
+        }
 
-  h1 {
-    text-align: center;
-    background-color: black;
-    color: gray;
-    padding: 10px;
-    border-radius: 10px;
-  }
+        .profile-info h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: var(--primary-gold);
+            letter-spacing: 1px;
+        }
 
-  .intro {
-    background: darkgray;
-    padding: 10px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-  }
+        /* Grid Layout */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
 
-  .gallery, .videos {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-bottom: 20px;
-  }
+        section h2 {
+            border-left: 4px solid var(--primary-gold);
+            padding-left: 15px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+        }
 
-  .card {
-    background: gray;
-    border-radius: 10px;
-    text-align: center;
-    width: 30%;
-    padding: 10px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  }
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 15px;
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 20px;
+        }
 
-  .card img {
-    width: 100%;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary-gold);
+        }
 
-  .card img:hover {
-    transform: scale(1.03);
-  }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
 
-  iframe {
-    width: 100%;
-    height: 180px;
-    border-radius: 10px;
-    border: none;
-  }
+        .gallery img {
+            width: 100%;
+            border-radius: 10px;
+            cursor: pointer;
+            filter: grayscale(30%);
+            transition: var(--transition);
+        }
 
-  .output-contact {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 40px;
-  }
+        .gallery img:hover {
+            filter: grayscale(0%);
+        }
 
-  .outputs, .contact {
-    flex: 1 1 45%;
-    background: lightgray;
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
+        /* Buttons & Links */
+        .btn-link {
+            display: inline-block;
+            color: var(--primary-gold);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 10px;
+        }
 
-  .outputs a {
-    color: lightcoral;
-    text-decoration: none;
-  }
+        .btn-link:hover {
+            text-decoration: underline;
+        }
 
-  .outputs a:hover {
-    text-decoration: underline;
-  }
+        button {
+            background: var(--primary-gold);
+            color: black;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
 
-  .contact-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    background: gray;
-    border-radius: 8px;
-    padding: 6px;
-    cursor: pointer;
-  }
+        button:hover {
+            background: #fff;
+            transform: scale(1.02);
+        }
 
-  .contact-item img {
-    width: 25px;
-    margin-right: 8px;
-  }
+        /* Contact Items */
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
 
-  textarea {
-    width: 95%;
-    height: 50px;
-    border-radius: 5px;
-    padding: 8px;
-  }
+        .contact-item:hover {
+            background: var(--primary-gold);
+            color: black;
+        }
 
-  button {
-    background-color: #007bff;
-    color: lightgray;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+        .contact-item img {
+            width: 24px;
+            filter: invert(1);
+        }
 
-  button:hover {
-    background-color: #0056b3;
-  }
+        /* Form */
+        textarea {
+            width: 100%;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            color: white;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
 
-  aside h2 {
-    color: #333;
-    border-bottom: 2px solid black;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
-  }
+        /* Responsive */
+        @media (max-width: 850px) {
+            .content-grid { grid-template-columns: 1fr; }
+            .profile-header { flex-direction: column; text-align: center; }
+        }
 
-  aside p, aside li {
-    font-size: 14px;
-    line-height: 1.5;
-  }
-
-  aside ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  aside li::before {
-    content: "• ";
-    color: black;
-  }
-
-  /* LIGHTBOX FIX */
-  .lightbox {
-    display: none;
-    position: fixed;
-    z-index: 10000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.8);
-    justify-content: center;
-    align-items: center;
-  }
-
-  .lightbox img {
-    max-width: 90%;
-    max-height: 80%;
-    border-radius: 10px;
-    box-shadow: 0 0 15px #000;
-  }
-
-  .lightbox.active {
-    display: flex;
-  }
-
-  @media (max-width: 900px) {
-    .container {
-      flex-direction: column;
-    }
-    aside, main {
-      width: 100%;
-    }
-    .card, .outputs, .contact {
-      width: 100%;
-    }
-    .profile-section {
-      flex-direction: column;
-      text-align: center;
-    }
-  }
-</style>
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox img { max-width: 80%; max-height: 80%; border: 3px solid white; }
+    </style>
 </head>
 <body>
 
 <div class="container">
-  <main>
+    <header class="profile-header">
+        <img src="Screenshot_2025-09-05-10-59-04-494_com.google.android.apps.photos-edit.jpg" alt="Cris John Gatila" class="profile-img" onclick="openLightbox(this)">
+        <div class="profile-info">
+            <h1>Cris John Gatila</h1>
+            <p style="font-size: 1.1rem; opacity: 0.8;">IT Student | Traditional Artist | UI Designer</p>
+            <p>Blending technical precision with creative expression.</p>
+        </div>
+    </header>
 
-    <div class="profile-section">
-      <img src="Screenshot_2025-09-05-10-59-04-494_com.google.android.apps.photos-edit.jpg" alt="Profile Picture" onclick="openLightbox(this)">
-      <div class="profile-info">
-        <h2>Cris John Gatila</h2>
-        <p>Information Technology Student | Artist | Designer</p>
-      </div>
+    <div class="content-grid">
+        <main>
+            <section>
+                <h2>Artistic Gallery</h2>
+                <div class="gallery">
+                    <div class="card">
+                        <img src="Screenshot_2025-02-09-14-03-23-316_com.alightcreative.motion-edit.jpg" onclick="openLightbox(this)">
+                        <p style="text-align: center; margin-top: 10px;">Charcoal Study I</p>
+                    </div>
+                    <div class="card">
+                        <img src="IMG_20250109_223247.jpg" onclick="openLightbox(this)">
+                        <p style="text-align: center; margin-top: 10px;">Graphite Portrait</p>
+                    </div>
+                    <div class="card">
+                        <img src="IMG_20250308_214126.jpg" onclick="openLightbox(this)">
+                        <p style="text-align: center; margin-top: 10px;">Charcoal Study II</p>
+                    </div>
+                </div>
+            </section>
+
+            <section style="margin-top: 40px;">
+                <h2>Digital Works & Projects</h2>
+                <div class="card">
+                    <h3>Canva Design Portfolio</h3>
+                    <p>A collection of marketing materials and visual layouts.</p>
+                    <a href="https://drive.google.com/file/d/1Piw3qsTJ4deEFnf_XTnwX0sAetST8Fy8/view?usp=drivesdk" class="btn-link" target="_blank">View Project →</a>
+                </div>
+                <div class="card">
+                    <h3>UI/UX Figma Design</h3>
+                    <p>High-fidelity prototypes and user interface concepts.</p>
+                    <a href="YOUR_FIGMA_LINK" class="btn-link" target="_blank">View Case Study →</a>
+                </div>
+            </section>
+        </main>
+
+        <aside>
+            <section>
+                <h2>About Me</h2>
+                <div class="card">
+                    <p>I specialize in Information Technology with a deep passion for the visual arts. My goal is to bridge the gap between functional code and aesthetic design.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Skills</h2>
+                <div class="card">
+                    <ul style="padding-left: 20px;">
+                        <li>HTML5 & CSS3</li>
+                        <li>Figma / Canva</li>
+                        <li>Video Post-Production</li>
+                        <li>Traditional Illustration</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Connect</h2>
+                <div class="card">
+                    <div class="contact-item" onclick="window.open('mailto:gatilacrisjohn@gmail.com')">
+                        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email">
+                        <span>Email Me</span>
+                    </div>
+                    <div class="contact-item" onclick="window.open('https://www.facebook.com/share/1BYeLy5bAU/')">
+                        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="FB">
+                        <span>Facebook</span>
+                    </div>
+                    <textarea placeholder="Leave a message..."></textarea>
+                    <button>Send Message</button>
+                </div>
+            </section>
+        </aside>
     </div>
-
-    <h1>PORTFOLIO</h1>
-
-    <div class="intro">
-   <h3>This is my portfolio website and it's about my works in art and my outputs in school.</h3>
-    </div>
-    
-    
-    <h2>My sample drawing click to check  .<h2>
-    
-
-    <div class="gallery">
-      <div class="card">
-        <img src="Screenshot_2025-02-09-14-03-23-316_com.alightcreative.motion-edit.jpg" onclick="openLightbox(this)">
-        <p>My charcoal drawing</p>
-      </div>
-      <div class="card">
-        <img src="IMG_20250109_223247.jpg" onclick="openLightbox(this)">
-        <p>Graphite drawing</p>
-      </div>
-      <div class="card">
-        <img src="IMG_20250308_214126.jpg" onclick="openLightbox(this)">
-        <p>A charcoal drawing</p>
-      </div>
-    </div>
-    
-   <div> <h3>Drawing videos</h3></div>
-
- <div class="videos">
-   <div class="card">
-     <iframe src="https://www.youtube.com/embed/S__ubSpnR1M" allowfullscreen></iframe>
-     <p>Random video for now</p>
-   </div>
-   <div class="card">
-     <iframe src="https://www.youtube.com/embed/Q2vl6q9frv0" allowfullscreen></iframe>
-     <p>Random video for now</p>
-   </div>
-   <div class="card">
-     <iframe src="https://www.youtube.com/embed/MbCTyc053yk" allowfullscreen></iframe>
-     <p>Random video for now</p>
-   </div>
- </div>
- 
-  <aside>
-    <h3>About Me</h3>
-    <p>An Information Technology student who loves art and design. Passionate about creating digital and traditional artworks while continuously improving web design and creative skills.</p>
-
-    <h3>Education</h3>
-    <ul>
-      <li>Bachelor of Science in Information Technology</li>
-      <li>Cabacungan National High School (2022–2023)</li>
-    </ul>
-
-    <h3>Skills</h3>
-    <ul>
-      <li>HTML, WordPress</li>
-      <li>Figma & Canva Design</li>
-      <li>Charcoal & Graphite Drawing</li>
-      <li>Video Editing (CapCut, Alight Motion)</li>
-    </ul>
-  </aside>
 </div>
- 
-    <div class="output-contact">
-      <div class="outputs">
-        <h3>MY SAMPLE OUTPUT</h3>
-        <p>Canva Portfolio - <a href="https://drive.google.com/file/d/1Piw3qsTJ4deEFnf_XTnwX0sAetST8Fy8/view?usp=drivesdk" target="_blank">Click link</a></p>
-        <p>Figma Portfolio - <a href="YOUR_FIGMA_LINK" target="_blank">Click link</a></p>
-        <p>Operating system - <a href="https://drive.google.com/drive/folders/1JgQYnOQVi4LaQoSzuXCdSS76NekQ8IUR" target="_blank">Click link</a></p>
-      </div>
 
-      <div class="contact">
-        <h3>CONTACT</h3>
-        <div class="contact-item" onclick="window.open('https://www.facebook.com/share/1BYeLy5bAU/')">
-          <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
-          <span>Cris John Gatila</span>
-        </div>
-        <div class="contact-item" onclick="window.open('https://wa.me/YOUR_NUMBER','_blank')">
-          <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-          <span>09935909691</span>
-        </div>
-        <div class="contact-item" onclick="window.open('mailto:gatilacrisjohn@gmail.com','_blank')">
-          <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email">
-          <span>gatilacrisjohn@gmail.com</span>
-        </div>
-
-        <label for="message">Message:</label>
-        <textarea id="message" placeholder="Type your message..."></textarea>
-        <br>
-        <button>Send</button>
-      </div>
-    </div>
-  </main>
-
- 
-
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <img id="lightbox-img" src="">
+<div class="lightbox" id="lightbox" onclick="this.classList.remove('active')">
+    <img id="lightbox-img" src="">
 </div>
 
 <script>
-  function openLightbox(img) {
-    document.getElementById("lightbox-img").src = img.src;
-    document.getElementById("lightbox").classList.add("active");
-  }
-  function closeLightbox() {
-    document.getElementById("lightbox").classList.remove("active");
-  }
+    function openLightbox(img) {
+        document.getElementById("lightbox-img").src = img.src;
+        document.getElementById("lightbox").classList.add("active");
+    }
 </script>
 
 </body>
-</html>
+  </html>
+  
