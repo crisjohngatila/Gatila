@@ -8,10 +8,9 @@
     <style>
         :root {
             --primary-gold: #d4af37;
-            --dark-overlay: rgba(0, 0, 0, 0.88);
+            --dark-overlay: rgba(0, 0, 0, 0.9);
             --card-bg: rgba(255, 255, 255, 0.08);
             --text-light: #f4f4f4;
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         body {
@@ -19,198 +18,78 @@
             background: linear-gradient(var(--dark-overlay), var(--dark-overlay)), 
                         url('Gemini_Generated_Image_z2579sz2579sz257~3.png') no-repeat center center/cover fixed;
             color: var(--text-light);
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
+            margin: 0; padding: 0; overflow-x: hidden;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 20px;
-            animation: fadeInUp 0.8s ease-out;
-        }
+        .container { max-width: 1200px; margin: 30px auto; padding: 20px; }
 
         /* Header */
         .profile-header {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            background: var(--card-bg);
-            backdrop-filter: blur(15px);
-            padding: 40px;
-            border-radius: 24px;
-            border: 1px solid rgba(255,255,255,0.1);
-            margin-bottom: 40px;
+            display: flex; align-items: center; gap: 25px;
+            background: var(--card-bg); backdrop-filter: blur(15px);
+            padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 30px;
         }
 
-        .profile-img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--primary-gold);
-            transition: var(--transition);
-            cursor: pointer;
-        }
+        .profile-img { width: 110px; height: 110px; border-radius: 50%; border: 3px solid var(--primary-gold); object-fit: cover; }
+        .profile-info h1 { font-size: 1.8rem; margin: 0; color: var(--primary-gold); text-transform: uppercase; }
 
-        .profile-info h1 {
-            font-size: 2.2rem;
-            margin: 0;
-            color: var(--primary-gold);
-            text-transform: uppercase;
-        }
-
-        /* Layout Grid */
-        .content-grid {
-            display: grid;
-            grid-template-columns: 2.5fr 1fr;
-            gap: 30px;
-        }
+        /* Grid System */
+        .content-grid { display: grid; grid-template-columns: 2.5fr 1fr; gap: 25px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
 
         section h2 {
-            border-left: 4px solid var(--primary-gold);
-            padding-left: 15px;
-            margin: 40px 0 20px;
-            text-transform: uppercase;
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-        }
-
-        /* 3-Column Grid */
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            border-left: 4px solid var(--primary-gold); padding-left: 12px;
+            margin: 25px 0 15px; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1.5px;
         }
 
         .card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 12px;
-            transition: var(--transition);
-            border: 1px solid rgba(255,255,255,0.05);
-            backdrop-filter: blur(5px);
-            display: flex;
-            flex-direction: column;
+            background: var(--card-bg); border-radius: 12px; padding: 12px;
+            border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(5px);
+            transition: 0.3s;
         }
+        .card:hover { transform: translateY(-5px); border-color: var(--primary-gold); }
 
-        .card:hover {
-            transform: translateY(-8px);
-            border-color: var(--primary-gold);
-            background: rgba(255, 255, 255, 0.12);
-        }
-
-        .card img, .video-container {
-            width: 100%;
-            height: 160px;
-            border-radius: 10px;
-            object-fit: cover;
-            background: #000;
-        }
-
+        .card img, .video-box { width: 100%; height: 140px; border-radius: 8px; object-fit: cover; background: #000; }
         iframe { width: 100%; height: 100%; border: none; }
 
-        /* Resume Actions */
-        .resume-box {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
+        /* Project & Resume Links */
+        .link-box { display: flex; gap: 10px; margin-top: 10px; }
+        .btn {
+            flex: 1; padding: 10px; font-size: 0.75rem; text-align: center;
+            text-decoration: none; border-radius: 6px; font-weight: 600; transition: 0.2s;
         }
+        .btn-gold { background: var(--primary-gold); color: #000; }
+        .btn-outline { background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); }
+        .btn:hover { opacity: 0.8; }
 
-        .btn-small {
-            flex: 1;
-            padding: 10px 5px;
-            font-size: 0.75rem;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        .btn-view { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); }
-        .btn-download { background: var(--primary-gold); color: black; }
-        .btn-small:hover { opacity: 0.8; transform: translateY(-2px); }
-
-        /* FIXED CONTACT LAYOUT */
+        /* Fixed Contact Layout */
         .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 10px;
-            margin-bottom: 8px;
-            cursor: pointer;
-            transition: 0.3s;
-            width: 100%;
-            box-sizing: border-box;
-            overflow: hidden; /* Prevents text overflow */
+            display: flex; align-items: center; padding: 10px 15px;
+            background: rgba(255,255,255,0.04); border-radius: 8px;
+            margin-bottom: 8px; text-decoration: none; color: #fff; cursor: pointer;
         }
-
-        .contact-item:hover { background: var(--primary-gold); color: black; }
-        
-        .contact-item img { 
-            width: 20px; 
-            min-width: 20px; /* Keeps icon from shrinking */
-            filter: invert(1); 
-        }
-        
+        .contact-item:hover { background: var(--primary-gold); color: #000; }
+        .contact-item img { width: 18px; height: 18px; margin-right: 12px; filter: invert(1); object-fit: contain; }
         .contact-item:hover img { filter: invert(0); }
-
-        .contact-item span {
-            font-size: 0.85rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis; /* Adds "..." if text is too long */
-        }
+        .contact-item span { font-size: 0.8rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
         textarea {
-            width: 100%;
-            background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: white;
-            padding: 10px;
-            border-radius: 8px;
-            margin-top: 10px;
-            box-sizing: border-box;
-            font-family: inherit;
-        }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            background: var(--primary-gold);
-            border: none;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: 0.3s;
+            width: 100%; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1);
+            color: #fff; padding: 10px; border-radius: 8px; margin-top: 10px; box-sizing: border-box;
         }
 
         /* Lightbox */
         .lightbox {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.9);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
+            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95);
+            z-index: 1000; justify-content: center; align-items: center;
         }
         .lightbox.active { display: flex; }
-        .lightbox img { max-width: 85%; max-height: 85%; border-radius: 10px; }
+        .lightbox img { max-width: 90%; max-height: 80%; border-radius: 10px; }
 
-        @media (max-width: 950px) {
-            .content-grid, .grid-3 { grid-template-columns: 1fr; }
-            .profile-header { flex-direction: column; text-align: center; }
+        @media (max-width: 900px) {
+            .content-grid { grid-template-columns: 1fr; }
+            .grid-3 { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
@@ -218,10 +97,10 @@
 
 <div class="container">
     <header class="profile-header">
-        <img src="Screenshot_2025-09-05-10-59-04-494_com.google.android.apps.photos-edit.jpg" class="profile-img" onclick="openLightbox(this)">
+        <img src="Screenshot_2025-09-05-10-59-04-494_com.google.android.apps.photos-edit.jpg" class="profile-img">
         <div class="profile-info">
             <h1>Cris John Gatila</h1>
-            <p>IT Student | Traditional Artist | UI/UX Designer</p>
+            <p style="opacity: 0.8; font-size: 0.85rem;">IT Student | Traditional Artist | UI/UX Designer</p>
         </div>
     </header>
 
@@ -230,53 +109,44 @@
             <section>
                 <h2>Traditional Artworks</h2>
                 <div class="grid-3">
-                    <div class="card">
-                        <img src="Screenshot_2025-02-09-14-03-23-316_com.alightcreative.motion-edit.jpg" onclick="openLightbox(this)">
-                        <p style="text-align: center; font-size: 0.75rem; margin-top: 10px;">Charcoal Drawing</p>
-                    </div>
-                    <div class="card">
-                        <img src="IMG_20250109_223247.jpg" onclick="openLightbox(this)">
-                        <p style="text-align: center; font-size: 0.75rem; margin-top: 10px;">Graphite Portrait</p>
-                    </div>
-                    <div class="card">
-                        <img src="IMG_20250308_214126.jpg" onclick="openLightbox(this)">
-                        <p style="text-align: center; font-size: 0.75rem; margin-top: 10px;">Fine Art Study</p>
-                    </div>
+                    <div class="card"><img src="Screenshot_2025-02-09-14-03-23-316_com.alightcreative.motion-edit.jpg" onclick="openLightbox(this)"><p style="text-align:center; font-size:0.65rem;">Charcoal Drawing</p></div>
+                    <div class="card"><img src="IMG_20250109_223247.jpg" onclick="openLightbox(this)"><p style="text-align:center; font-size:0.65rem;">Graphite Portrait</p></div>
+                    <div class="card"><img src="IMG_20250308_214126.jpg" onclick="openLightbox(this)"><p style="text-align:center; font-size:0.65rem;">Fine Art Study</p></div>
                 </div>
             </section>
 
             <section>
-                <h2>Process Videos</h2>
+                <h2>Drawing Process</h2>
                 <div class="grid-3">
-                    <div class="card">
-                        <div class="video-container"><iframe src="https://www.youtube.com/embed/Q2vl6q9frv00"></iframe></div>
-                        <p style="text-align: center; font-size: 0.75rem; margin-top: 10px;">Speed Drawing</p>
-                    </div>
-                    <div class="card">
-                        <div class="video-container"><iframe src="https://www.youtube.com/embed/Q2vl6q9frv01"></iframe></div>
-                        <p style="text-align: center; font-size: 0.75rem; margin-top: 10px;">Work in Progress</p>
-                    </div>
-                    <div class="card">
-                        <div class="video-container"><iframe src="https://www.youtube.com/embed/Q2vl6q9frv02"></iframe></div>
-                        <p style="text-align: center; font-size: 0.75rem; margin-top: 10px;">Final Showcase</p>
-                    </div>
+                    <div class="card"><div class="video-box"><iframe src="https://www.youtube.com/embed/Q2vl6q9frv04"></iframe></div><p style="text-align:center; font-size:0.65rem;">Speed Drawing</p></div>
+                    <div class="card"><div class="video-box"><iframe src="https://www.youtube.com/embed/Q2vl6q9frv05"></iframe></div><p style="text-align:center; font-size:0.65rem;">Timelapse</p></div>
+                    <div class="card"><div class="video-box"><iframe src="https://www.youtube.com/embed/Q2vl6q9frv06"></iframe></div><p style="text-align:center; font-size:0.65rem;">Final Showcase</p></div>
                 </div>
             </section>
 
             <section>
                 <h2>Certifications</h2>
                 <div class="grid-3">
+                    <div class="card"><img src="CERT_1.jpg" onclick="openLightbox(this)"><p style="text-align:center; font-size:0.65rem;">IT Certificate</p></div>
+                    <div class="card"><img src="CERT_2.jpg" onclick="openLightbox(this)"><p style="text-align:center; font-size:0.65rem;">Design Workshop</p></div>
+                    <div class="card"><img src="CERT_3.jpg" onclick="openLightbox(this)"><p style="text-align:center; font-size:0.65rem;">Project Seminar</p></div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Project Outputs</h2>
+                <div class="grid-3">
                     <div class="card">
-                        <img src="CERTIFICATE_IMAGE_1.jpg" style="cursor:zoom-in" onclick="openLightbox(this)">
-                        <p style="text-align: center; font-size: 0.75rem; margin-top: 10px;">IT Certification</p>
+                        <h3 style="font-size:0.8rem; margin:0 0 10px;">Canva Portfolio</h3>
+                        <a href="https://drive.google.com/file/d/1Piw3qsTJ4deEFnf_XTnwX0sAetST8Fy8/view" class="btn btn-gold" target="_blank">View Project</a>
                     </div>
                     <div class="card">
-                        <img src="CERTIFICATE_IMAGE_2.jpg" style="cursor:zoom-in" onclick="openLightbox(this)">
-                        <p style="text-align: center; font-size: 0.75rem; margin-top: 10px;">Design Workshop</p>
+                        <h3 style="font-size:0.8rem; margin:0 0 10px;">Figma UI Design</h3>
+                        <a href="#" class="btn btn-gold" target="_blank">Open Prototype</a>
                     </div>
                     <div class="card">
-                        <img src="CERTIFICATE_IMAGE_3.jpg" style="cursor:zoom-in" onclick="openLightbox(this)">
-                        <p style="text-align: center; font-size: 0.75rem; margin-top: 10px;">Project Seminar</p>
+                        <h3 style="font-size:0.8rem; margin:0 0 10px;">IT Documentation</h3>
+                        <a href="https://drive.google.com/drive/folders/1JgQYnOQVi4LaQoSzuXCdSS76NekQ8IUR" class="btn btn-gold" target="_blank">Access Files</a>
                     </div>
                 </div>
             </section>
@@ -286,25 +156,23 @@
             <section>
                 <h2>My Resume</h2>
                 <div class="card">
-                    <p style="font-size: 0.8rem; margin-bottom: 10px; opacity: 0.8;">Professional Curriculum Vitae</p>
-                    <div class="resume-box">
-                        <a href="YOUR_RESUME_LINK" class="btn-small btn-view" target="_blank">View PDF</a>
-                        <a href="YOUR_RESUME_LINK" class="btn-small btn-download" download>Download</a>
+                    <p style="font-size: 0.75rem; margin-bottom: 10px; opacity: 0.7;">Updated April 2026</p>
+                    <div class="link-box">
+                        <a href="#" class="btn btn-outline">View</a>
+                        <a href="#" class="btn btn-gold" download>Download</a>
                     </div>
                 </div>
             </section>
 
             <section>
-                <h2>About Me</h2>
-                <div class="card">
-                    <p style="font-size: 0.85rem; line-height: 1.6; opacity: 0.9;">BSIT Student at Cabacungan National High School. Blending technology with a lifelong passion for fine arts.</p>
-                </div>
+                <h2>About</h2>
+                <div class="card"><p style="font-size: 0.75rem; line-height: 1.5;">BSIT Student. Bridging the gap between technology and fine art.</p></div>
             </section>
 
             <section>
                 <h2>Connect</h2>
                 <div class="card">
-                    <div class="contact-item" onclick="window.open('https://www.facebook.com/share/1BYeLy5bAU/')">
+                    <div class="contact-item" onclick="window.open('https://facebook.com/...')">
                         <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png">
                         <span>Cris John Gatila</span>
                     </div>
@@ -312,22 +180,19 @@
                         <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png">
                         <span>gatilacrisjohn@gmail.com</span>
                     </div>
-                    <div class="contact-item" onclick="window.open('tel:09935909691')">
+                    <div class="contact-item">
                         <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
                         <span>09935909691</span>
                     </div>
-                    
-                    <textarea placeholder="Write a message..."></textarea>
-                    <button>Send Message</button>
+                    <textarea placeholder="Message..."></textarea>
+                    <button class="btn btn-gold" style="width:100%; margin-top:10px; border:none; cursor:pointer;">Send</button>
                 </div>
             </section>
         </aside>
     </div>
 </div>
 
-<div class="lightbox" id="lightbox" onclick="this.classList.remove('active')">
-    <img id="lightbox-img" src="">
-</div>
+<div class="lightbox" id="lightbox" onclick="this.classList.remove('active')"><img id="lightbox-img"></div>
 
 <script>
     function openLightbox(img) {
