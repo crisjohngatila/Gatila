@@ -53,13 +53,12 @@
         .card img, .video-box { width: 100%; height: 140px; border-radius: 8px; object-fit: cover; background: #000; }
         iframe { width: 100%; height: 100%; border: none; }
 
-        /* Project & Resume Links */
-        .link-box { display: flex; gap: 10px; margin-top: 10px; }
+        /* Buttons */
         .btn {
-            flex: 1; padding: 10px; font-size: 0.75rem; text-align: center;
-            text-decoration: none; border-radius: 6px; font-weight: 600; transition: 0.2s;
+            display: inline-block; flex: 1; padding: 10px; font-size: 0.75rem; text-align: center;
+            text-decoration: none; border-radius: 6px; font-weight: 600; transition: 0.2s; border: none;
         }
-        .btn-gold { background: var(--primary-gold); color: #000; }
+        .btn-gold { background: var(--primary-gold); color: #000; cursor: pointer; }
         .btn-outline { background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); }
         .btn:hover { opacity: 0.8; }
 
@@ -67,16 +66,14 @@
         .contact-item {
             display: flex; align-items: center; padding: 10px 15px;
             background: rgba(255,255,255,0.04); border-radius: 8px;
-            margin-bottom: 8px; text-decoration: none; color: #fff; cursor: pointer;
+            margin-bottom: 8px; text-decoration: none; color: #fff;
         }
-        .contact-item:hover { background: var(--primary-gold); color: #000; }
         .contact-item img { width: 18px; height: 18px; margin-right: 12px; filter: invert(1); object-fit: contain; }
-        .contact-item:hover img { filter: invert(0); }
         .contact-item span { font-size: 0.8rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-        textarea {
+        input, textarea {
             width: 100%; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1);
-            color: #fff; padding: 10px; border-radius: 8px; margin-top: 10px; box-sizing: border-box;
+            color: #fff; padding: 10px; border-radius: 8px; margin-top: 10px; box-sizing: border-box; font-family: inherit;
         }
 
         /* Lightbox */
@@ -88,8 +85,8 @@
         .lightbox img { max-width: 90%; max-height: 80%; border-radius: 10px; }
 
         @media (max-width: 900px) {
-            .content-grid { grid-template-columns: 1fr; }
-            .grid-3 { grid-template-columns: 1fr 1fr; }
+            .content-grid, .grid-3 { grid-template-columns: 1fr; }
+            .profile-header { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
@@ -118,9 +115,9 @@
             <section>
                 <h2>Drawing Process</h2>
                 <div class="grid-3">
-                    <div class="card"><div class="video-box"><iframe src="https://www.youtube.com/embed/Q2vl6q9frv04"></iframe></div><p style="text-align:center; font-size:0.65rem;">Speed Drawing</p></div>
-                    <div class="card"><div class="video-box"><iframe src="https://www.youtube.com/embed/Q2vl6q9frv05"></iframe></div><p style="text-align:center; font-size:0.65rem;">Timelapse</p></div>
-                    <div class="card"><div class="video-box"><iframe src="https://www.youtube.com/embed/Q2vl6q9frv06"></iframe></div><p style="text-align:center; font-size:0.65rem;">Final Showcase</p></div>
+                    <div class="card"><div class="video-box"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div><p style="text-align:center; font-size:0.65rem;">Speed Drawing</p></div>
+                    <div class="card"><div class="video-box"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div><p style="text-align:center; font-size:0.65rem;">Timelapse</p></div>
+                    <div class="card"><div class="video-box"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe></div><p style="text-align:center; font-size:0.65rem;">Final Showcase</p></div>
                 </div>
             </section>
 
@@ -157,7 +154,7 @@
                 <h2>My Resume</h2>
                 <div class="card">
                     <p style="font-size: 0.75rem; margin-bottom: 10px; opacity: 0.7;">Updated April 2026</p>
-                    <div class="link-box">
+                    <div style="display:flex; gap:10px;">
                         <a href="#" class="btn btn-outline">View</a>
                         <a href="#" class="btn btn-gold" download>Download</a>
                     </div>
@@ -172,21 +169,16 @@
             <section>
                 <h2>Connect</h2>
                 <div class="card">
-                    <div class="contact-item" onclick="window.open('https://facebook.com/...')">
-                        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png">
-                        <span>Cris John Gatila</span>
+                    <form action="https://formspree.io/f/gatilacrisjohn@gmail.com" method="POST">
+                        <div class="contact-item">
+                            <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png">
+                            <span>gatilacrisjohn@gmail.com</span>
+                        </div>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="message" placeholder="Type your message here..." required></textarea>
+                        <button type="submit" class="btn btn-gold" style="width:100%; margin-top:10px;">Send Message</button>
+                    </form>
                     </div>
-                    <div class="contact-item" onclick="window.open('mailto:gatilacrisjohn@gmail.com')">
-                        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png">
-                        <span>gatilacrisjohn@gmail.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
-                        <span>09935909691</span>
-                    </div>
-                    <textarea placeholder="Message..."></textarea>
-                    <button class="btn btn-gold" style="width:100%; margin-top:10px; border:none; cursor:pointer;">Send</button>
-                </div>
             </section>
         </aside>
     </div>
