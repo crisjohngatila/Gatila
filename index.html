@@ -6,23 +6,93 @@
     <title>Cris John Gatila | Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --primary-gold: #d4af37; --dark-overlay: rgba(0, 0, 0, 0.9); --card-bg: rgba(255, 255, 255, 0.08); --text-light: #f4f4f4; }
-        body { font-family: 'Poppins', sans-serif; background: linear-gradient(var(--dark-overlay), var(--dark-overlay)), url('Gemini_Generated_Image_z2579sz2579sz257~3.png') no-repeat center center/cover fixed; color: var(--text-light); margin: 0; padding: 0; }
+        :root {
+            --primary-gold: #d4af37;
+            --dark-overlay: rgba(0, 0, 0, 0.9);
+            --card-bg: rgba(255, 255, 255, 0.08);
+            --text-light: #f4f4f4;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(var(--dark-overlay), var(--dark-overlay)), 
+                        url('Gemini_Generated_Image_z2579sz2579sz257~3.png') no-repeat center center/cover fixed;
+            color: var(--text-light);
+            margin: 0; padding: 0; overflow-x: hidden;
+        }
+
         .container { max-width: 1200px; margin: 30px auto; padding: 20px; }
-        .profile-header { display: flex; align-items: center; gap: 25px; background: var(--card-bg); backdrop-filter: blur(15px); padding: 30px; border-radius: 20px; margin-bottom: 30px; }
+
+        /* Header */
+        .profile-header {
+            display: flex; align-items: center; gap: 25px;
+            background: var(--card-bg); backdrop-filter: blur(15px);
+            padding: 30px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 30px;
+        }
+
         .profile-img { width: 100px; height: 100px; border-radius: 50%; border: 3px solid var(--primary-gold); object-fit: cover; }
+        .profile-info h1 { font-size: 1.6rem; margin: 0; color: var(--primary-gold); text-transform: uppercase; }
+
+        /* Grids */
         .content-grid { display: grid; grid-template-columns: 2.5fr 1fr; gap: 25px; }
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-        section h2 { border-left: 4px solid var(--primary-gold); padding-left: 12px; margin: 25px 0 15px; text-transform: uppercase; font-size: 0.85rem; }
-        .card { background: var(--card-bg); border-radius: 12px; padding: 12px; backdrop-filter: blur(5px); }
+
+        section h2 {
+            border-left: 4px solid var(--primary-gold); padding-left: 12px;
+            margin: 25px 0 15px; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1.5px;
+        }
+
+        .card {
+            background: var(--card-bg); border-radius: 12px; padding: 12px;
+            border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(5px);
+        }
+
         .card img, .video-box { width: 100%; height: 140px; border-radius: 8px; object-fit: cover; background: #000; }
         iframe { width: 100%; height: 100%; border: none; }
-        .btn { display: block; padding: 10px; font-size: 0.75rem; text-align: center; text-decoration: none; border-radius: 6px; font-weight: 600; border: none; cursor: pointer; }
-        .btn-gold { background: var(--primary-gold); color: #000; }
-        .contact-row { display: flex; align-items: center; padding: 10px; background: rgba(255,255,255,0.04); border-radius: 8px; margin-bottom: 8px; text-decoration: none; color: #fff; }
-        .contact-row img { width: 18px; height: 18px; margin-right: 12px; filter: invert(1); }
-        input, textarea { width: 100%; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 12px; border-radius: 8px; box-sizing: border-box; margin-top: 5px; }
-        @media (max-width: 900px) { .content-grid, .grid-3 { grid-template-columns: 1fr; } }
+
+        /* Buttons */
+        .btn {
+            display: inline-block; padding: 10px; font-size: 0.75rem; text-align: center;
+            text-decoration: none; border-radius: 6px; font-weight: 600; border: none;
+        }
+        .btn-gold { background: var(--primary-gold); color: #000; cursor: pointer; }
+        .btn-outline { background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); }
+
+        /* FIXED CONTACT BOXES */
+        .contact-stack { display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px; }
+
+        .contact-row {
+            display: flex; align-items: center; padding: 10px 15px;
+            background: rgba(255,255,255,0.04); border-radius: 8px;
+            text-decoration: none; color: #fff;
+        }
+
+        .contact-row img { 
+            width: 18px; height: 18px; min-width: 18px; 
+            margin-right: 12px; filter: invert(1); object-fit: contain; 
+        }
+
+        .contact-row span { font-size: 0.75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+        /* Form Inputs */
+        input, textarea {
+            width: 100%; background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.1);
+            color: #fff; padding: 12px; border-radius: 8px; margin-top: 8px; 
+            box-sizing: border-box; font-family: inherit; font-size: 0.8rem;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95);
+            z-index: 1000; justify-content: center; align-items: center;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox img { max-width: 90%; max-height: 80%; border-radius: 10px; }
+
+        @media (max-width: 900px) {
+            .content-grid, .grid-3 { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -30,43 +100,99 @@
 <div class="container">
     <header class="profile-header">
         <img src="Screenshot_2025-09-05-10-59-04-494_com.google.android.apps.photos-edit.jpg" class="profile-img">
-        <div><h1>Cris John Gatila</h1><p style="opacity: 0.8; font-size: 0.8rem;">IT Student | Artist | Designer</p></div>
+        <div class="profile-info">
+            <h1>Cris John Gatila</h1>
+            <p style="opacity: 0.8; font-size: 0.8rem;">IT Student | Artist | Designer</p>
+        </div>
     </header>
 
     <div class="content-grid">
         <main>
-            <section><h2>Traditional Artworks</h2><div class="grid-3">
-                <div class="card"><img src="Screenshot_2025-02-09-14-03-23-316_com.alightcreative.motion-edit.jpg"><p style="text-align:center; font-size:0.6rem;">Charcoal</p></div>
-                <div class="card"><img src="IMG_20250109_223247.jpg"><p style="text-align:center; font-size:0.6rem;">Graphite</p></div>
-                <div class="card"><img src="IMG_20250308_214126.jpg"><p style="text-align:center; font-size:0.6rem;">Fine Art</p></div>
-            </div></section>
+            <section>
+                <h2>Traditional Artworks</h2>
+                <div class="grid-3">
+                    <div class="card"><img src="Screenshot_2025-02-09-14-03-23-316_com.alightcreative.motion-edit.jpg" onclick="openLightbox(this)"><p style="text-align:center; font-size:0.6rem;">Charcoal</p></div>
+                    <div class="card"><img src="IMG_20250109_223247.jpg" onclick="openLightbox(this)"><p style="text-align:center; font-size:0.6rem;">Graphite</p></div>
+                    <div class="card"><img src="IMG_20250308_214126.jpg" onclick="openLightbox(this)"><p style="text-align:center; font-size:0.6rem;">Fine Art</p></div>
+                </div>
+            </section>
 
-            <section><h2>Drawing Process</h2><div class="grid-3">
-                <div class="card"><div class="video-box"><iframe src="https://www.youtube.com/embed/VIDEO_ID1"></iframe></div><p style="text-align:center; font-size:0.6rem;">Speed Drawing</p></div>
-                <div class="card"><div class="video-box"><iframe src="https://www.youtube.com/embed/VIDEO_ID2"></iframe></div><p style="text-align:center; font-size:0.6rem;">Timelapse</p></div>
-                <div class="card"><div class="video-box"><iframe src="https://www.youtube.com/embed/VIDEO_ID3"></iframe></div><p style="text-align:center; font-size:0.6rem;">Showcase</p></div>
-            </div></section>
+            <section>
+                <h2>Drawing Process</h2>
+                <div class="grid-3">
+                    <div class="card"><div class="video-box"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe></div><p style="text-align:center; font-size:0.6rem;">Speed Drawing</p></div>
+                    <div class="card"><div class="video-box"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe></div><p style="text-align:center; font-size:0.6rem;">Timelapse</p></div>
+                    <div class="card"><div class="video-box"><iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe></div><p style="text-align:center; font-size:0.6rem;">Showcase</p></div>
+                </div>
+            </section>
 
-            <section><h2>Project Outputs</h2><div class="grid-3">
-                <div class="card"><h3 style="font-size:0.75rem;">Canva Portfolio</h3><a href="https://drive.google.com/file/d/1Piw3qsTJ4deEFnf_XTnwX0sAetST8Fy8/view" class="btn btn-gold" target="_blank">View</a></div>
-                <div class="card"><h3 style="font-size:0.75rem;">Figma UI</h3><a href="#" class="btn btn-gold" target="_blank">Open Prototype</a></div>
-                <div class="card"><h3 style="font-size:0.75rem;">IT Docs</h3><a href="https://drive.google.com/drive/folders/1JgQYnOQVi4LaQoSzuXCdSS76NekQ8IUR" class="btn btn-gold" target="_blank">View Files</a></div>
-            </div></section>
+            <section>
+                <h2>Certifications</h2>
+                <div class="grid-3">
+                    <div class="card"><img src="CERT_1.jpg" onclick="openLightbox(this)"><p style="text-align:center; font-size:0.6rem;">IT Cert</p></div>
+                    <div class="card"><img src="CERT_2.jpg" onclick="openLightbox(this)"><p style="text-align:center; font-size:0.6rem;">Design</p></div>
+                    <div class="card"><img src="CERT_3.jpg" onclick="openLightbox(this)"><p style="text-align:center; font-size:0.6rem;">Seminar</p></div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Project Outputs</h2>
+                <div class="grid-3">
+                    <div class="card"><h3 style="font-size:0.75rem;">Canva Portfolio</h3><a href="https://drive.google.com/file/d/1Piw3qsTJ4deEFnf_XTnwX0sAetST8Fy8/view" class="btn btn-gold" style="width:100%; box-sizing:border-box;" target="_blank">View</a></div>
+                    <div class="card"><h3 style="font-size:0.75rem;">Figma Design</h3><a href="#" class="btn btn-gold" style="width:100%; box-sizing:border-box;" target="_blank">Open</a></div>
+                    <div class="card"><h3 style="font-size:0.75rem;">IT Docs</h3><a href="https://drive.google.com/drive/folders/1JgQYnOQVi4LaQoSzuXCdSS76NekQ8IUR" class="btn btn-gold" style="width:100%; box-sizing:border-box;" target="_blank">Files</a></div>
+                </div>
+            </section>
         </main>
 
         <aside>
-            <section><h2>Connect</h2><div class="card">
-                <div class="contact-row"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png"><span>Cris John Gatila</span></div>
-                <div class="contact-row"><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png"><span>gatilacrisjohn@gmail.com</span></div>
-                <div class="contact-row"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png"><span>09935909691</span></div>
-                <form action="https://formspree.io/f/mqakpzoz" method="POST">
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    <textarea name="message" rows="3" placeholder="Message..." required></textarea>
-                    <button type="submit" class="btn btn-gold" style="width:100%; margin-top:10px;">Send Message</button>
-                </form>
-            </div></section>
+            <section>
+                <h2>My Resume</h2>
+                <div class="card">
+                    <div style="display:flex; gap:8px;">
+                        <a href="#" class="btn btn-outline" style="flex:1">View</a>
+                        <a href="#" class="btn btn-gold" style="flex:1" download>Download</a>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Connect</h2>
+                <div class="card">
+                    <div class="contact-stack">
+                        <a href="https://www.facebook.com/share/1BYeLy5bAU/" class="contact-row" target="_blank">
+                            <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png">
+                            <span>Cris John Gatila</span>
+                        </a>
+                        <div class="contact-row">
+                            <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png">
+                            <span>gatilacrisjohn@gmail.com</span>
+                        </div>
+                        <div class="contact-row">
+                            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+                            <span>09935909691</span>
+                        </div>
+                    </div>
+
+                    <form action="https://formspree.io/f/mqakpzoz" method="POST">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="message" rows="4" placeholder="Message..." required></textarea>
+                        <button type="submit" class="btn btn-gold" style="width:100%; margin-top:10px;">Send Email</button>
+                    </form>
+                </div>
+            </section>
         </aside>
     </div>
 </div>
+
+<div class="lightbox" id="lightbox" onclick="this.classList.remove('active')"><img id="lightbox-img"></div>
+
+<script>
+    function openLightbox(img) {
+        document.getElementById("lightbox-img").src = img.src;
+        document.getElementById("lightbox").classList.add("active");
+    }
+</script>
+
 </body>
 </html>
