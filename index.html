@@ -188,8 +188,13 @@
                         <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
                         <span>09935909691</span>
                     </div>
-                    <textarea placeholder="Message..."></textarea>
-                    <button class="btn btn-gold" style="width:100%; margin-top:10px; border:none; cursor:pointer;">Send</button>
+
+                    <form action="https://formspree.io/f/xjgjoezz" method="POST" style="margin-top:10px;">
+                        <input type="text" name="name" class="contact-input" placeholder="Your Name" required>
+                        <input type="text" name="subject" class="contact-input" placeholder="Subject" required>
+                        <textarea name="message" placeholder="What message would you like to send?" required></textarea>
+                        <button type="submit" class="btn btn-gold" style="margin-top:10px;">Send Message</button>
+                    </form>
                 </div>
             </section>
         </aside>
